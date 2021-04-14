@@ -1,5 +1,7 @@
 # Introduction to Authentication Module Project
 
+<!-- Change to allow initial commit -->
+
 ## Introduction
 
 Use `Node.js`, `Express` and `Knex` to build an API that provides register, login and logout functionality.
