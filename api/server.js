@@ -24,7 +24,7 @@ const server = express();
 
 server.use(
   session({
-    name: "chimp",
+    name: "chocolatechip",
     secret: "mysecreter", // should be in env variable
     cookie: {
       maxAge: 1000 * 60 * 60,
@@ -40,7 +40,7 @@ server.use(express.json());
 server.use(cors());
 
 server.use("/api/auth", authRouter);
-server.use("/api/user", userRouter);
+server.use("/api/users", userRouter);
 
 server.get("/", (req, res) => {
   console.log(req.session);
