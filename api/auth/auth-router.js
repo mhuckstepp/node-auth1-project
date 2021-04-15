@@ -7,14 +7,14 @@ const {
 } = require("./auth-middleware");
 const User = require("../users/users-model");
 
-router.post("/register", (req, res, next) => {
+router.post("/register", checkUsernameFree, (req, res, next) => {
   const { username, password } = req.body;
   const hash = bcrypt.hashSync(password, 10);
 
   const userForDatabase = { username, password: hash };
 });
 
-router.post("/login", (req, res, next) => {
+router.post("/login", checkUsernameExists, (req, res, next) => {
   res.json("login");
 });
 

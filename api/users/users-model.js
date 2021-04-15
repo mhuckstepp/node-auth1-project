@@ -3,21 +3,25 @@ const db = require("../../data/db-config");
   resolves to an ARRAY with all users, each user having { user_id, username }
  */
 function find() {
-  return db("users as u").select("user_id", "username");
+  return db("users").select("user_id", "username");
 }
 
 /**
   resolves to an ARRAY with all users that match the filter condition
  */
 function findBy(filter) {
-  return db("users as u").where(filter);
+  return db("users").where(filter);
+}
+
+function findByUsername(username) {
+  return db("users").where("username", username).first();
 }
 
 /**
   resolves to the user { user_id, username } with the given user_id
  */
 function findById(user_id) {
-  return db("users as u").where("user_id", user_id);
+  return db("users").where("user_id", user_id);
 }
 
 /**
@@ -35,4 +39,5 @@ module.exports = {
   findBy,
   findById,
   add,
+  findByUsername,
 };
