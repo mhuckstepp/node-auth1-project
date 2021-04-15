@@ -42,7 +42,7 @@ server.use(
 server.use(helmet());
 server.use(express.json());
 server.use(cors());
-server.use(express.static(path.join(__dirname, "authfront/build")));
+server.use(express.static(path.join(__dirname, "client/build")));
 
 server.use("/api/auth", authRouter);
 server.use("/api/users", userRouter);
