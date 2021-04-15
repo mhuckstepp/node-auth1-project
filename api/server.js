@@ -1,7 +1,11 @@
+const dotenv = require("dotenv").config();
 const express = require("express");
 const helmet = require("helmet");
 const cors = require("cors");
 const session = require("express-session");
+const path = require("path");
+
+const SECRET = process.env.SECRET;
 // const KnexSessionStore = require('connect-session-store')(session)
 
 /**
@@ -25,7 +29,7 @@ const server = express();
 server.use(
   session({
     name: "chocolatechip",
-    secret: "mysecreter", // should be in env variable
+    secret: SECRET, // should be in env variable
     cookie: {
       maxAge: 1000 * 60 * 60,
       secure: false,
@@ -38,6 +42,7 @@ server.use(
 server.use(helmet());
 server.use(express.json());
 server.use(cors());
+server.use(express.static(path.join(__dirname, "authfront/build")));
 
 server.use("/api/auth", authRouter);
 server.use("/api/users", userRouter);

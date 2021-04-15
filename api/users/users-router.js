@@ -8,7 +8,7 @@ router.get("/", restricted, (req, res, next) => {
   find()
     .then((users) => {
       if (Object.keys(users).length) {
-        res.status(201).json(users);
+        res.status(200).json(users);
       } else {
         res.status(401).json({
           message: "no users  found",
@@ -23,7 +23,7 @@ router.get("/:filter", (req, res, next) => {
   findBy(filter)
     .then((users) => {
       if (Object.keys(users).length) {
-        res.status(201).json(users);
+        res.status(200).json(users);
       } else {
         res.status(401).json({
           message: "no users  found",
