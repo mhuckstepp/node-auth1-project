@@ -9,7 +9,7 @@
     "rollback": "knex migrate:rollback",
     "seed": "knex seed:run",
     "start": "node index.js",
-    "heroku-postbuild": "cd client && npm i && npm run build"
+    "heroku-postbuild": "cd client && yarn install && yarn build"
   },
   "devDependencies": {
     "@types/jest": "^26.0.22",
